@@ -15,6 +15,19 @@ virtualenv sbx
 ```
 cp requirements.txt sbx && cd sbx
 ./bin/pip install -r requirements.txt
+
+# Install Pychart manually, pip is broken
+mkdir src && cd src
+wget http://download.gna.org/pychart/PyChart-1.39.tar.gz
+tar -xzf PyChart-1.39.tar.gz 
+brew install ghostscript
+../../bin/python setup.py install
+
+
+# Need to fix the PIL installation
+cd lib/python2.7/site-packages/
+ln -s PIL-1.1.7-py2.7-macosx-10.8-intel.egg PIL
+
 cd ..
 ```
 
