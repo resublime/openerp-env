@@ -1,9 +1,0 @@
-#!/Users/jonas/tmp/oe-env-inst/sbx2/bin/python
-# EASY-INSTALL-ENTRY-SCRIPT: 'pylint==0.28.0','console_scripts','pylint'
-__requires__ = 'pylint==0.28.0'
-import sys
-from pkg_resources import load_entry_point
-
-sys.exit(
-   load_entry_point('pylint==0.28.0', 'console_scripts', 'pylint')()
-)

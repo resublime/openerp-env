@@ -1,9 +1,0 @@
-#!/Users/jonas/tmp/oe-env-inst/sbx2/bin/python
-# EASY-INSTALL-ENTRY-SCRIPT: 'Pycco==0.3.0','console_scripts','pycco'
-__requires__ = 'Pycco==0.3.0'
-import sys
-from pkg_resources import load_entry_point
-
-sys.exit(
-   load_entry_point('Pycco==0.3.0', 'console_scripts', 'pycco')()
-)
