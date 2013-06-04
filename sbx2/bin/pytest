@@ -1,0 +1,7 @@
+#!/Users/jonas/tmp/oe-env-inst/sbx2/bin/python -u
+
+import warnings
+warnings.simplefilter('default', DeprecationWarning)
+
+from logilab.common.pytest import run
+run()

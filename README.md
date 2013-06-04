@@ -1,29 +1,35 @@
 Development setup for Python and OpenERP
-===================================================
+========================================
 
 
-Preparations
-------------
+Preparations on OSX
+------------------
 
 First create a Python virtual environment using virtualenv:
 
 ```
-# python-env is a suggested name, any name can be used
-virtualenv sbx
+virtualenv venv --distribute
+source venv/bin/activate
 ```
 
 ```
-cp requirements.txt sbx && cd sbx
-./bin/pip install -r requirements.txt
+pip install -r requirements.txt
+```
 
+Fix due to problems with PyChart on OSX
+
+```
 # Install Pychart manually, pip is broken
 mkdir src && cd src
 wget http://download.gna.org/pychart/PyChart-1.39.tar.gz
 tar -xzf PyChart-1.39.tar.gz 
 brew install ghostscript
 ../../bin/python setup.py install
+```
 
+Fix due to problems with PIL on OSX
 
+```
 # Need to fix the PIL installation
 cd lib/python2.7/site-packages/
 ln -s PIL-1.1.7-py2.7-macosx-10.8-intel.egg PIL
@@ -53,16 +59,21 @@ alter role openerp with password 'postgres';
 ```
 
 
-Install OpenERP
---------------
+Install OpenERP on OSX
+---------------------
 
 
+Make sure that `source venv/bin/activate` has been executed (or the instllation will be performed globally and not in the virtual environment)
+
 ```
-wget http://nightly.openerp.com/7.0/nightly/src/openerp-7.0-latest.tar.gz
-tar -xvzf openerp-7.0-latest.tar.gz
-cd openerp
-../bin/python setup.py install
+cd openerp-7.0-20130603-231132
+python setup.py install
 ```
+
+
+
+Installation on Heroku
+---------------------
 
 
 
