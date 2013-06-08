@@ -5,7 +5,6 @@ Mako==0.8.1
 Markdown==2.3.1
 MarkupSafe==0.18
 PIL==1.1.7
-PyChart==1.39
 PyWebDAV==0.9.8
 PyXML==0.8.4
 PyYAML==3.10
@@ -21,7 +20,6 @@ logilab-astng==0.24.3
 logilab-common==0.59.1
 lxml==3.2.1
 mock==1.0.1
-openerp==7.0-20130603-231132
 paramiko==1.10.1
 psutil==0.7.1
 psycopg2==2.5
@@ -44,3 +42,5 @@ vatnumber==1.1
 vobject==0.8.1c
 wsgiref==0.1.2
 xlwt==0.7.5
+-e PyChart-1.39
+-e openerp-7.0-20130603-231132

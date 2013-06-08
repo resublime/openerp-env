@@ -20,11 +20,9 @@ Fix due to problems with PyChart on OSX
 
 ```
 # Install Pychart manually, pip is broken
-mkdir src && cd src
-wget http://download.gna.org/pychart/PyChart-1.39.tar.gz
-tar -xzf PyChart-1.39.tar.gz 
+cd PyChart
+python setup.py install
 brew install ghostscript
-../../bin/python setup.py install
 ```
 
 Fix due to problems with PIL on OSX
