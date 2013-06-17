@@ -44,3 +44,4 @@ wsgiref==0.1.2
 xlwt==0.7.5
 -e PyChart-1.39
 -e openerp-7.0-20130603-231132
+gunicorn

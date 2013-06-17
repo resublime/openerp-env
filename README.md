@@ -69,6 +69,25 @@ python setup.py install
 ```
 
 
+Running OpenERP
+-------------
+
+Start Postgres and then OpenERP.
+
+```
+# start Postgres if it's no started
+pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
+export PGDATA=/usr/local/var/postgres/
+pg_ctl status
+
+
+# Make sure the right python environment is used
+source venv/bin/activate
+./venv/bin/openerp-server
+```
+
+
+
 
 Installation on Heroku
 ---------------------
