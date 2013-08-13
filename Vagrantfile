@@ -47,7 +47,7 @@ Vagrant.configure("2") do |config|
     vb_config.vm.box_url = "http://files.vagrantup.com/precise64.box"
 
     vb_config.vm.network :public_network
-    vb_config.vm.network :forwarded_port, guest: 8080, host: 8080, auto_correct: false
+    vb_config.vm.network :forwarded_port, guest: 8080, host: 8080, auto_correct: true
 
     vb_config.vm.provision :shell, :path => "bootstrap.sh"
     vb_config.vm.provision :shell, :path => "bootstrap2.sh"
@@ -61,7 +61,7 @@ Vagrant.configure("2") do |config|
   config.vm.define :coreos do |vb_config|
 
 #    vb_config.vm.network :public_network
-    vb_config.vm.network :forwarded_port, guest: 8080, host: 8080, auto_correct: false
+    vb_config.vm.network :forwarded_port, guest: 8080, host: 8080, auto_correct: true
 
     vb_config.vm.box = "coreos"
     vb_config.vm.box_url = "http://storage.core-os.net/coreos/amd64-generic/dev-channel/coreos_production_vagrant.box"

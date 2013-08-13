@@ -1,119 +1,28 @@
-Development setup for Python and OpenERP
-========================================
+Development environement for OpenERP
+====================================
+
+Linux containers is a nice tecnnology that is increasing in popularity. Below are instructions
+for hotwo get started running OpenERP on CoreOS which is using docker containers. See README-OSX.md
+for instruction about howto install on OSX.
 
 
-Preparations on OSX
-------------------
+Pre-requisite:
 
-First create a Python virtual environment using virtualenv:
-
-```
-virtualenv venv --distribute
-source venv/bin/activate
-```
-
-```
-pip install -r requirements.txt
-```
-
-Fix due to problems with PyChart on OSX
-
-```
-# Install Pychart manually, pip is broken
-cd PyChart
-python setup.py install
-brew install ghostscript
-```
-
-Fix due to problems with PIL on OSX
-
-```
-# Need to fix the PIL installation
-cd lib/python2.7/site-packages/
-ln -s PIL-1.1.7-py2.7-macosx-10.8-intel.egg PIL
-
-cd ..
-```
+ * VirtualBox
+ * vagrant, see vagrantup.com
 
 
-Postgres:
+Installation:
 
-```
-# see details below
-brew install postgres
-initdb /usr/local/var/postgres -E utf8
-pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
-export PGDATA=/usr/local/var/postgres/
-pg_ctl status
-```
-
-Create a postgres user
-
-```
-createuser openerp
-psql -l
-psql template1
-alter role openerp with password 'postgres';
-```
+1. `vagrant up coreos` - create and start a virtual machine - it is also possible to use ubuntu `vagrant up ubuntu` 
+1. `vagrant ssh coreos` - login to the virtual machine - for ubuntu do `vagrant ssh ubuntu`
+1. Start with creating a container that simplfies the management of CoreOOS: `JACC=$(docker run -d colmsjo/jacc)`
+1. `docker ps` will show the containers running. $JACC has the ID for the container just created.
+1. Get the IP for the new container: `docker inspect $JACC
+ * This will save the IP in a variable: `CONTAINER_IP=$(docker inspect $JACC | grep IPAddress | awk '{ print $2 }' | tr -d ',"')`
+1. Now do `ssh root@$CONTAINER_IP`. The password is 'jacc'
 
 
-Install OpenERP on OSX
----------------------
-
-
-Make sure that `source venv/bin/activate` has been executed (or the instllation will be performed globally and not in the virtual environment)
-
-```
-cd openerp-7.0-20130603-231132
-python setup.py install
-```
-
-
-Running OpenERP
--------------
-
-Start Postgres and then OpenERP.
-
-```
-# start Postgres if it's no started
-pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
-export PGDATA=/usr/local/var/postgres/
-pg_ctl status
-
-
-# Make sure the right python environment is used
-source venv/bin/activate
-./venv/bin/openerp-server
-```
-
-
-
-
-Installation on Heroku
----------------------
-
-
-
-
-Misc stuff
----------
-
-List available fabfile commands:
-
-```
-./python-env/bin/fab -f ./fabfile.py -l
-```
-
-This alias is usefull to have:
-
-```
-# Define a alias for fab, you need to be in the repo root folder to run it
-# Add this to your bashrc (or other shell rc) file 
-alias fab='./python-env/bin/fab -f ./fabfile.py'
-
-# Now just run fab
-fab list
-```
 
 
 
