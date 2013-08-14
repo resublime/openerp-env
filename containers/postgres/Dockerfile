@@ -13,6 +13,7 @@ MAINTAINER Jonas Colmsjö "jonas@gizur.com"
 
 
 # sudo will complain about unknown host otherwise
+RUN echo "127.0.0.1\tlocalhost" >> /etc/hosts
 RUN echo "127.0.0.1\t`hostname`" >> /etc/hosts
 
 # make sure the package repository is up to date

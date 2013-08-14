@@ -14,8 +14,8 @@ Pre-requisite:
 
 Installation:
 
-1. `vagrant up ubuntu` - create and start a virtual machine - it is also possible to use ubuntu `vagrant up coreos` 
-1. `vagrant ssh ubuntu` - login to the virtual machine - for ubuntu do `vagrant ssh coreos`
+1. `vagrant up ubuntu` - create and start a virtual machine - it is also possible to use coreos `vagrant up coreos` 
+1. `vagrant ssh ubuntu` - login to the virtual machine - for coreos do `vagrant ssh coreos`
 
 It will take some time to download everything the first time. Starting the virtual machine and
 new continers is quickly done once they've been downloaded.
