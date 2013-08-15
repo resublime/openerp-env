@@ -52,7 +52,7 @@ RUN /usr/local/bin/virtualenv /venv --distribute
 ADD . /venv/src
 
 # Install OpenERP
-RUN source /venv/bin/activate; cd /venv/src/openerp-7.0-20130603-231132; python setup.py install
+RUN /bin/bash -c "source /venv/bin/activate; cd /venv/src/openerp-7.0-20130603-231132; python setup.py install"
 
 
 # Start OpenERP
