@@ -42,14 +42,25 @@ RUN pip install virtualenv
 # Install some dependensices (the OpenERP list)
 RUN apt-get install -y python-dateutil python-feedparser python-ldap python-libxslt1 python-lxml python-mako python-openid python-psycopg2 python-reportlab python-simplejson python-tz python-vobject python-werkzeug python-yaml
 
+RUN apt-get install -y libldap2-dev libsasl2-dev libpq-dev libxml2-dev libxslt1-dev
+
+
+# Create Python environment
+RUN /usr/local/bin/virtualenv /venv --distribute
 
 # Bundle app source
-ADD . /src
+ADD . /venv/src
 
-RUN virtualenv /venv --distribute
-RUN source /venv/bin/activate; cd /src/openerp-7.0-20130603-231132; python setup.py install
+# Install OpenERP
+RUN /bin/bash -c "source /venv/bin/activate; cd /venv/src/openerp-7.0-20130603-231132; python setup.py install"
 
+# Fix problems
+RUN ln -s /usr/lib/python2.7/dist-packages/PIL /venv/lib/python2.7/PIL
+RUN ln -s /usr/lib/python2.7/dist-packages/PIL.pth /venv/lib/python2.7/PIL.pth
+
+# Create a user to run as, root is not allowed
+RUN useradd -r -m -s /bin/bash openerp
 
 # Start OpenERP
-EXPOSE  8080
-CMD ["/venv/bin/activate;/venv/bin/openerp-server"]
+EXPOSE  8069
+CMD ["/bin/su", "openerp", "-c", "source /venv/bin/activate; /venv/bin/openerp-server"]
