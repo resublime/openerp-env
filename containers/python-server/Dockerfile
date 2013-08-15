@@ -43,11 +43,14 @@ RUN pip install virtualenv
 RUN apt-get install -y python-dateutil python-feedparser python-ldap python-libxslt1 python-lxml python-mako python-openid python-psycopg2 python-reportlab python-simplejson python-tz python-vobject python-werkzeug python-yaml
 
 
-# Bundle app source
-ADD . /src
+# Create Python environment
+RUN /usr/local/bin/virtualenv /venv --distribute
 
-RUN virtualenv /venv --distribute
-RUN source /venv/bin/activate; cd /src/openerp-7.0-20130603-231132; python setup.py install
+# Bundle app source
+ADD . /venv/src
+
+# Install OpenERP
+RUN source /venv/bin/activate; cd /venv/src/openerp-7.0-20130603-231132; python setup.py install
 
 
 # Start OpenERP
