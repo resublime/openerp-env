@@ -55,13 +55,12 @@ ADD . /venv/src
 RUN /bin/bash -c "source /venv/bin/activate; cd /venv/src/openerp-7.0-20130603-231132; python setup.py install"
 
 # Fix problems
-RUN ln -s /usr/lib/python2.7/dist-packages/PIL PIL
-RUN ln -s /usr/lib/python2.7/dist-packages/PIL.pth PIL.pth
+RUN ln -s /usr/lib/python2.7/dist-packages/PIL /venv/lib/python2.7/PIL
+RUN ln -s /usr/lib/python2.7/dist-packages/PIL.pth /venv/lib/python2.7/PIL.pth
 
-# Crate a user to run as, root is not allowed
+# Create a user to run as, root is not allowed
 RUN useradd -r -m -s /bin/bash openerp
 
 # Start OpenERP
 EXPOSE  8069
-#CMD ["/bin/bash", "-c", "source /venv/bin/activate; /venv/bin/openerp-server"]
 CMD ["/bin/su", "openerp", "-c", "source /venv/bin/activate; /venv/bin/openerp-server"]
