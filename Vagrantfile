@@ -54,6 +54,11 @@ Vagrant.configure("2") do |config|
   end
 
 
+  config.vm.provider "virtualbox" do |v|
+    v.customize ["modifyvm", :id, "--memory", "500"]
+  end
+
+
   #
   # CoreOS - an operating system build for docker (only!)
   #
