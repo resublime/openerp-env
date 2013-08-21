@@ -77,6 +77,9 @@ sudo apt-get install php5-cli php5-curl -y
 
 sudo npm install hipache -g
 
+# Change port to 8069
+sudo cp ./hipache_config.json /usr/lib/node_modules/jacc
+
 
 #
 # Install grunt, used for nodejs development
