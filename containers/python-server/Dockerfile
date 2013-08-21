@@ -61,6 +61,9 @@ RUN ln -s /usr/lib/python2.7/dist-packages/PIL.pth /venv/lib/python2.7/PIL.pth
 # Create a user to run as, root is not allowed
 RUN useradd -r -m -s /bin/bash openerp
 
+# Add the OpenERP configuration
+ADD ./home/openerp /home/openerp
+
 # Start OpenERP
 EXPOSE  8069
 CMD ["/bin/su", "openerp", "-c", "source /venv/bin/activate; /venv/bin/openerp-server"]
