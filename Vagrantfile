@@ -56,7 +56,7 @@ Vagrant.configure("2") do |config|
 
 
   config.vm.provider "virtualbox" do |v|
-    v.customize ["modifyvm", :id, "--memory", "500"]
+    v.customize ["modifyvm", :id, "--memory", "1000"]
   end
 
 
