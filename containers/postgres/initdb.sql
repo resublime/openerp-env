@@ -4,3 +4,7 @@
 CREATE ROLE openerp WITH SUPERUSER LOGIN PASSWORD 'openerp';
 
 SELECT rolname FROM pg_roles;
+
+
+CREATE DATABASE template2 WITH TEMPLATE = template0 ENCODING = 'UNICODE'
+UPDATE pg_database SET datistemplate = TRUE WHERE datname = 'template2';
