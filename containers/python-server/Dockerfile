@@ -32,6 +32,15 @@ RUN apt-get install -y git wget
 
 
 #
+# OpenERP uses a Mail-server
+#
+
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y postfix
+
+# NOTE: Probably need to fix some configuration!!
+
+
+#
 # Install Python and virutalenv
 #
 
