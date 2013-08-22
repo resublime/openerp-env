@@ -1,5 +1,5 @@
 [options]
-addons_path = /venv/local/lib/python2.7/site-packages/openerp-7.0_20130601_231036-py2.7.egg/openerp/addons
+addons_path = /venv/src/openerp-7.0-20130603-231132/openerp/addons
 admin_passwd = admin
 csv_internal_sep = ,
 db_host = False
