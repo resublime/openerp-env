@@ -49,10 +49,10 @@ RUN apt-get install -y libldap2-dev libsasl2-dev libpq-dev libxml2-dev libxslt1-
 RUN /usr/local/bin/virtualenv /venv --distribute
 
 # Bundle app source
-ADD . /venv/src
+ADD . /venv/src2
 
 # Install OpenERP
-RUN /bin/bash -c "source /venv/bin/activate; cd /venv/src/openerp-7.0-20130603-231132; python setup.py install"
+RUN /bin/bash -c "source /venv/bin/activate; cd /venv/src2/openerp-7.0-20130603-231132; python setup.py install"
 
 # Fix problems
 RUN ln -s /usr/lib/python2.7/dist-packages/PIL /venv/lib/python2.7/PIL
@@ -65,6 +65,8 @@ RUN useradd -r -m -s /bin/bash openerp
 ADD ./home/openerp /home/openerp
 
 RUN chown -R openerp:openerp /home/openerp
+RUN chown -R openerp:root    /venv
+RUN chmod -R 755 /venv/src
 
 # Start OpenERP
 EXPOSE  8069
