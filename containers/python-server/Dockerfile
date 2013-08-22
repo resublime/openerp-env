@@ -64,6 +64,8 @@ RUN useradd -r -m -s /bin/bash openerp
 # Add the OpenERP configuration
 ADD ./home/openerp /home/openerp
 
+RUN chown -R openerp:openerp /home/openerp
+
 # Start OpenERP
 EXPOSE  8069
 CMD ["/bin/su", "openerp", "-c", "source /venv/bin/activate; /venv/bin/openerp-server"]
