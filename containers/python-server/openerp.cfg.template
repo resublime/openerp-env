@@ -1,14 +1,14 @@
 [options]
-addons_path = ../lib/python2.7/site-packages/openerp-7.0_20130601_231036-py2.7.egg/openerp/addons
+addons_path = /venv/lib/python2.7/site-packages/openerp-7.0_20130601_231036-py2.7.egg/openerp/addons
 admin_passwd = admin
 csv_internal_sep = ,
 db_host = False
 db_maxconn = 64
-db_name = False
-db_password = False
+db_name = template1
+db_password = openerp
 db_port = False
 db_template = template1
-db_user = jonas
+db_user = openerp
 dbfilter = .*
 debug_mode = False
 demo = {}
