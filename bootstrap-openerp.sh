@@ -5,7 +5,7 @@
 #
 
 cd ~
-git clone https://github.com/colmsjo/open-erp.git
+git clone https://github.com/colmsjo/openerp-env.git
 
 
 #
