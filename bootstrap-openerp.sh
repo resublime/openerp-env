@@ -22,3 +22,14 @@ sudo cp ./etc/init/docker-postgres.conf /etc/init
 sudo cp ./etc/init/docker-openerp.conf /etc/init
 
 
+#
+# Create tar achives for the containers
+#
+
+cd ~/openerp-env/containers/postgres
+tar -cf webapp.tar *
+
+cd ~/openerp-env/containers/python-server
+tar -cf webapp.tar *
+
+
