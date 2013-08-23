@@ -19,16 +19,12 @@ sudo apt-get install -y lxc-docker
 # Need to run docker with other flags, this file need to be updated once the machine is up
 cp ./etc/init/docker.conf /etc/init
 
-# Fix problem with socker permisssions
-#sudo chmod a+rw /var/run/docker.sock
-
 
 #
-# Install redis, used by hipache
+# Install redis, used by hipache and redis-dns
 #
 
 sudo apt-get install -y redis-server
-
 
 
 #
@@ -36,10 +32,6 @@ sudo apt-get install -y redis-server
 #
 
 sudo apt-get install -y git unzip s3cmd curl dkms postgresql-client-common postgresql-client-9.1
-
-
-# Init vbox guest additions, NOTE: Should avoid for AWS (need to figure out how)
-sudo /etc/init.d/vboxadd setup
 
 
 #
@@ -67,35 +59,6 @@ sudo apt-get install -y coffeescript
 sudo npm install jacc -g
 
 
-
-#
-# Install hipache (reverse proxy developed by dotcloud)
-#
-
-sudo npm install hipache -g
-
-# Setup a configuration
-sudo cp ./hipache_config.json /usr/lib/node_modules/jacc
-sudo cp ./etc/init/hipache.conf /etc/init
-
-
-#
-# Install NodeJS forever
-#
-
-sudo npm install forever -g
-
-
-#
-# Install NodeJs redis-dns
-#
-
-sudo npm install redis-dns -g
-# Setup a configuration
-sudo cp ./redis-dns-config.json /usr/lib/node_modules/redis-dns
-sudo cp ./etc/init/redis-dns.conf /etc/init
-
-
 #
 # Install grunt, used for nodejs development
 #
@@ -108,11 +71,9 @@ sudo npm install grunt grunt-cli -g
 #sudo sh -c 'echo "dns-nameservers localhost 8.8.8.8" >> /etc/network/interfaces'
 
 
-
 #
-# Clone this repo and run the installation
+# Clone this repo
 #
 
 cd ~
-git clone https://github.com/colmsjo/jacc.git
-cd jacc && sudo npm install --production -g
+git clone https://github.com/colmsjo/openerp-env.git
