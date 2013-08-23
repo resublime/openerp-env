@@ -6,7 +6,7 @@
 
 cd ~
 git clone https://github.com/colmsjo/openerp-env.git
-
+cd openerp-env
 
 #
 # Start a postgres container at boot
