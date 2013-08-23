@@ -69,21 +69,31 @@ sudo npm install jacc -g
 
 
 #
-# Install hipache (reverse proxy developed by dotcloud) WILL BE MOVED INTO JACC
+# Install hipache (reverse proxy developed by dotcloud)
 #
 
 sudo npm install hipache -g
 
 # Setup a configuration
 sudo cp ./hipache_config.json /usr/lib/node_modules/jacc
-
+sudo cp ./etc/init/hipache.conf /etc/init
 
 
 #
-# Install NodeJs forever WILL BE MOVED INTO JACC
+# Install NodeJS forever
 #
 
 sudo npm install forever -g
+
+
+#
+# Install NodeJs redis-dns
+#
+
+sudo npm install redis-dns -g
+# Setup a configuration
+sudo cp ./redis-dns-config.json /usr/lib/node_modules/redis-dns
+sudo cp ./etc/init/redis-dns.conf /etc/init
 
 
 #
