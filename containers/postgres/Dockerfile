@@ -47,6 +47,7 @@ RUN chown -R postgres:postgres /var/run/postgresql
 
 # Create postgres user for OpenERP
 ADD . /src
+RUN chown -R postgres:root /src
 RUN /src/init.sh
 
 
