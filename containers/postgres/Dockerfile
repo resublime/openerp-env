@@ -51,7 +51,6 @@ RUN chown -R postgres:root /src
 RUN /src/init.sh
 
 
-
 #
 # Start Postgres
 #
