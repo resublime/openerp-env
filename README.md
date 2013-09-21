@@ -31,7 +31,7 @@ For ubuntu, this is changed in `/etc/init/docker.conf`. Now the docker command l
 an alias for simplcity: `alias docker='docker -H=tcp://127.0.0.1:4243'`. Place this in your `.profile` etc.
 
 
-### DNs server
+### DNS server
 
 DNS server to use in order to access Postgres using a name rather that an IP: `sudo npm install -g redis-dns --production`
 
@@ -59,6 +59,10 @@ Test:
  * `cd ~/openerp-env/containers/postgres`
  * `docker ps -a`
  * `docker build .`
+ * `docker images`
+ * `docker run -d c9b30338b944`
+ * `docker ps`
+ * `docker logs ...`
 
 
 ### hipache
