@@ -23,10 +23,47 @@ new continers is quickly done once they've been downloaded.
 `jacc` is used for deploying new containers. Just do `jacc --cmd help` for instructions. Containers are defined using a Dockerfile,
 see http://docs.docker.io/en/latest/use/builder/ for more information.
 
+
+## Configuration
+
 docker need to be configured to open up the HTTP API. The start script needs to look something like this `exec /usr/bin/docker -d -H 127.0.0.1:4243`.
 For ubuntu, this is changed in `/etc/init/docker.conf`. Now the docker command line tool needs the flag `-H=tcp://127.0.0.1:4242`. Create
 an alias for simplcity: `alias docker='docker -H=tcp://127.0.0.1:4243'`. Place this in your `.profile` etc.
 
+
+### DNs server
+
+DNS server to use in order to access Postgres using a name rather that an IP: `sudo npm install -g redis-dns --production`
+
+Setup:
+
+ * `cd /usr/lib/node_modules/redis-dns`
+ * `sudo cp redis-dns-config.json.template redis-dns-config.json`
+ * `sudo nano redis-dns-config.json` - update with your settings, change the DNS port to 53
+
+Check that the redis server is running: `sudo service redis-server status`
+
+Start the server with: `sudo sh -c 'node server.js > /var/log/redis-dns.log 2>&1 &'`
+
+Check the log: `sudo cat /var/log/redis-dns.log`
+
+
+Test:
+
+ * Configure the server like this: `redis-cli set redis-dns:dbserver 172.17.42.100`
+ * Check what the DNS server says: `dig @localhost dbserver`
+
+
+### Postgres
+
+ * `cd ~/openerp-env/containers/postgres`
+ * `docker ps -a`
+ * `docker build .`
+
+
+### hipache
+
+`sudo npm install -g hipache`
 
 
 ## For CoreOS
