@@ -66,20 +66,13 @@ Test within a container:
 
 ```
 # Start a container, just for playing around in
-docker run -t -i -dns=8.8.8.8 -dns=172.17.42.1 ubuntu /bin/bash
+docker run -t -i -dns=172.17.42.1 ubuntu /bin/bash
 
 # Install dig and nano
 apt-get install -y dnsutils nano net-tools ping
 
-# Check if the DNS finds the dbserver that was setup above (probably not) 
+# Check if the DNS finds the dbserver that was setup above
 dig dbserver
-
-# Show the IP address of the container
-ifconfig
-
-dig @172.17.42.1 dbserver
-
-nano /etc/resolv.conf
 ```
 
 
