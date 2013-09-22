@@ -35,23 +35,63 @@ an alias for simplcity: `alias docker='docker -H=tcp://127.0.0.1:4243'`. Place t
 
 DNS server to use in order to access Postgres using a name rather that an IP: `sudo npm install -g redis-dns --production`
 
-Setup:
+```
+# First show the IP of the docker bridge
+ifconfig |grep -A 7 docker0
 
- * `cd /usr/lib/node_modules/redis-dns`
- * `sudo cp redis-dns-config.json.template redis-dns-config.json`
- * `sudo nano redis-dns-config.json` - update with your settings, change the DNS port to 53
+cd /usr/lib/node_modules/redis-dns
+sudo cp redis-dns-config.json.template redis-dns-config.json
 
-Check that the redis server is running: `sudo service redis-server status`
+#update with your settings, change the DNS port to 53 and the IP address according to above
+sudo nano redis-dns-config.json
 
-Start the server with: `sudo sh -c 'node server.js > /var/log/redis-dns.log 2>&1 &'`
+# Check that the redis server is running
+sudo service redis-server status
 
-Check the log: `sudo cat /var/log/redis-dns.log`
+# Start the server with
+sudo sh -c 'node server.js > /var/log/redis-dns.log 2>&1 &'
 
+# Check the log
+sudo cat /var/log/redis-dns.log
+```
 
 Test:
 
- * Configure the server like this: `redis-cli set redis-dns:dbserver 172.17.42.100`
- * Check what the DNS server says: `dig @localhost dbserver`
+ * Configure the server like this: `redis-cli set redis-dns:dbserver.local 172.17.42.100`
+ * Check what the DNS server says: `dig @[IPAddress] dbserver.local`
+
+
+Test within a container:
+
+
+```
+# Start a container, just for playing around in
+docker run -t -i -dns=8.8.8.8 -dns=172.17.42.1 ubuntu /bin/bash
+
+# Install dig and nano
+apt-get install -y dnsutils nano net-tools ping
+
+# Check if the DNS finds the dbserver that was setup above (probably not) 
+dig dbserver
+
+# Show the IP address of the container
+ifconfig
+
+dig @172.17.42.1 dbserver
+
+nano /etc/resolv.conf
+```
+
+
+Redis CLI:
+
+```
+ubuntu@ip-10-48-201-164:~/openerp-env/containers$ redis-cli
+redis 127.0.0.1:6379> keys *
+1) "redis-dns:dbserver"
+redis 127.0.0.1:6379> get redis-dns:dbserver
+"172.17.42.100"
+```
 
 
 ### Postgres
@@ -59,10 +99,30 @@ Test:
  * `cd ~/openerp-env/containers/postgres`
  * `docker ps -a`
  * `docker build .`
- * `docker images`
- * `docker run -d c9b30338b944`
- * `docker ps`
- * `docker logs ...`
+ * `docker images` - show images
+ * `docker run -d [Image ID]`
+ * `docker ps` - get the ID of the container 
+ * `docker logs [ID]`
+ * `docker inspect [ID] | grep IPAddress` - show the IP adress of the container
+ * `redis-cli set redis-dns:postgres [IPAddress]` - Update the DNS server with the IP adress
+ * `dig @localhost postgres` - check that it works
+
+
+### OpenERP Python App Server
+
+
+```
+cd ~/openerp-env/containers/python-server
+cat README.md 
+```
+
+This needs to be configured according to the README above:
+
+```
+cp openerp.cfg.template ./home/openerp/.openerp_serverrc
+nano ./home/openerp/.openerp_serverrc
+```
+
 
 
 ### hipache
