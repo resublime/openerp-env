@@ -75,7 +75,7 @@ ADD ./home/openerp /home/openerp
 
 RUN chown -R openerp:openerp /home/openerp
 RUN chown -R openerp:root    /venv
-RUN chmod -R 755 /venv/src
+RUN chmod -R 755 /venv/src2
 
 # Start OpenERP
 EXPOSE  8069
