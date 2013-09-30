@@ -2,4 +2,4 @@ sbx
 venv
 *.pyc
 .elasticbeanstalk/
-node_modules
+./node_modules
