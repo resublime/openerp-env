@@ -8,9 +8,8 @@ for instruction about howto install on OSX.
 
 Pre-requisite:
 
- * VirtualBox
- * vagrant, see vagrantup.com
-
+ * VirtualBox and vagrant, see vagrantup.com
+ * Or EC2 instance, minimum m1.small with 16GB disk
 
 Installation:
 
@@ -114,6 +113,12 @@ This needs to be configured according to the README above:
 ```
 cp openerp.cfg.template ./home/openerp/.openerp_serverrc
 nano ./home/openerp/.openerp_serverrc
+```
+
+Start the container:
+
+```
+docker run -d -dns=172.17.42.1 [ID]
 ```
 
 
