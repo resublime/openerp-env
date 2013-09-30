@@ -21,5 +21,5 @@ sudo reboot
 # The rest is the same as outside ec2
 #
 
-source ./bootstrap2.sh
+echo "NOTE: Run bootstrap2.sh once the server has rebooted"
 
