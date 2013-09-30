@@ -63,8 +63,10 @@ sudo apt-get install -y coffeescript
 # Install hipache and redis-dns directly instead of using Jacc
 #
 
-sudo npm install hipache -g
-sudo npm install redis-dns -g
+sudo npm install hipache -g --production
+sudo npm install redis-dns -g --production
+
+sudo cp ./usr/lib/node_modules/redis-dns/redis-dns-config.json /usr/lib/node_modules/redis-dns
 
 
 #
