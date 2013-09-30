@@ -9,7 +9,7 @@ for instruction about howto install on OSX.
 Pre-requisite:
 
  * VirtualBox and vagrant, see vagrantup.com
- * Or EC2 instance, minimum m1.small with 16GB disk
+ * Or EC2 instance, minimum m1.medium with 100GB disk
 
 Installation:
 
@@ -23,7 +23,8 @@ new continers is quickly done once they've been downloaded.
 see http://docs.docker.io/en/latest/use/builder/ for more information.
 
 
-## Configuration
+Configuration
+------------
 
 docker need to be configured to open up the HTTP API. The start script needs to look something like this `exec /usr/bin/docker -d -H 127.0.0.1:4243`.
 For ubuntu, this is changed in `/etc/init/docker.conf`. Now the docker command line tool needs the flag `-H=tcp://127.0.0.1:4242`. Create
@@ -146,4 +147,16 @@ Configure Jacc:
 Start redis: `service redis start`
 
 Enable CORS in docker: update `/etc/init/docker.conf` with someting like `docker -d -H=”tcp://192.168.1.9:4243” -api-enable-cors`
+
+
+
+Tips and tricks
+--------------
+
+1. Often, docker will consume the disk when several images are built. The way to check what images that consumes the disk space is:
+ * containers - `sudo sh -c "ls -d /var/lib/docker/containers/* | xargs du -h -s | sort"`
+ * All containers are showed with `docker ps -a` (also those that are stopped)
+ * Remove stopped containers not being used (running containers can't be removed so there is no need to worry about that) - `docker rm [ID]`
+ * show images - graph      - `sudo sh -c "ls -d /var/lib/docker/graph/* | xargs du -h -s | sort"`
+
 
