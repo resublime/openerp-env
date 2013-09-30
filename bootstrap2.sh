@@ -56,7 +56,15 @@ sudo apt-get install -y coffeescript
 # Install NodeJs Jacc
 #
 
-sudo npm install jacc -g
+#sudo npm install jacc -g
+
+
+#
+# Install hipache and redis-dns directly instead of using Jacc
+#
+
+sudo npm install hipache -g
+sudo npm install redis-dns -g
 
 
 #
