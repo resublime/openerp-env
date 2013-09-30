@@ -67,6 +67,8 @@ sudo npm install hipache -g --production
 sudo npm install redis-dns -g --production
 
 sudo cp ./usr/lib/node_modules/redis-dns/redis-dns-config.json /usr/lib/node_modules/redis-dns
+ln -s /usr/lib/node_modules/redis-dns/bin/start.sh start-redis-dns
+
 
 
 #
