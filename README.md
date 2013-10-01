@@ -27,7 +27,7 @@ Configuration
 ------------
 
 docker need to be configured to open up the HTTP API. The start script needs to look something like this `exec /usr/bin/docker -d -H 127.0.0.1:4243`.
-For ubuntu, this is changed in `/etc/init/docker.conf`. Now the docker command line tool needs the flag `-H=tcp://127.0.0.1:4242`. Create
+For ubuntu, this is changed in `/etc/init/docker.conf`. Now the docker command line tool needs the flag `-H=tcp://127.0.0.1:4243`. Create
 an alias for simplcity: `alias docker='docker -H=tcp://127.0.0.1:4243'`. Place this in your `.profile` etc.
 
 
@@ -45,8 +45,11 @@ cat /usr/lib/node_modules/redis-dns/redis-dns-config.json
 # Check that the redis server is running
 sudo service redis-server status
 
-# Start the server using the symlink
-./start-redis-dns
+# Setup as a service
+sudo cp /usr/lib/node_modules/redis-dns/etc/init/redis-dns.conf /etc/init
+
+# Start the service
+sudo service redis-dns start
 
 # Check the log
 sudo cat /var/log/redis-dns.log
