@@ -2,9 +2,9 @@
 addons_path = /venv/src2/openerp-7.0-20130603-231132/openerp/addons
 admin_passwd = admin
 csv_internal_sep = ,
-db_host = False
+db_host = postgres
 db_maxconn = 64
-db_name = postgres
+db_name = openerp
 db_password = openerp
 db_port = False
 db_template = template0
