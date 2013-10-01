@@ -88,7 +88,7 @@ redis 127.0.0.1:6379> get redis-dns:dbserver
 
  * `cd ~/openerp-env/containers/postgres`
  * `docker ps -a`
- * `docker build .`
+ * `docker build -no-cache -rm .`
  * `docker images` - show images
  * `docker run -d [Image ID]`
  * `docker ps` - get the ID of the container 
@@ -111,6 +111,8 @@ This needs to be configured according to the README above:
 ```
 cp openerp.cfg.template ./home/openerp/.openerp_serverrc
 nano ./home/openerp/.openerp_serverrc
+
+docker build -no-cache -rm .
 ```
 
 Start the container:
