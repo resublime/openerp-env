@@ -3,4 +3,4 @@ Copy `openerp.cfg.template` to `./home/openerp/.openerp_serverrc` and edit the s
 It is primarily the database server ip that needs to be set (together with name and password if these have been changed) 
 if the default configurations is ok.
 
-Then build then container as usual: `docker build .`
+Then build then container as usual: `docker build -no-cache -rm .`
