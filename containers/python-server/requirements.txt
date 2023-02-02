@@ -10,7 +10,7 @@ PyXML==0.8.4
 PyYAML==3.10
 Pycco==0.3.0
 Pygments==1.6
-Werkzeug==0.8.3
+Werkzeug==0.15.5
 ZSI==2.0-rc3
 distribute==0.6.34
 docutils==0.10
