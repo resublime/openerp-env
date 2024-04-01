@@ -26,7 +26,7 @@ psycopg2==2.5
 pycrypto==2.6
 pydot==1.0.28
 pyflakes==0.7.2
-pylint==0.28.0
+pylint==2.6.1
 pyparsing==1.5.7
 pystache==0.5.3
 python-dateutil==1.5
