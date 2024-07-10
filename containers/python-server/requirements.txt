@@ -45,3 +45,4 @@ xlwt==0.7.5
 -e PyChart-1.39
 -e openerp-7.0-20130603-231132
 gunicorn
+zipp>=3.19.1 # not directly required, pinned by Snyk to avoid a vulnerability
