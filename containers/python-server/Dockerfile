@@ -8,7 +8,7 @@
 #
 # VERSION               0.0.1
 
-FROM     ubuntu
+FROM     ubuntu:24.10
 MAINTAINER Jonas Colmsjö "jonas@gizur.com"
 
 
